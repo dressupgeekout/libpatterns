@@ -15,7 +15,7 @@ libpatterns.a: patterns.o
 	ar crs $(.TARGET) $(.ALLSRC)
 
 libpatterns.so: patterns.o
-	$(CC) -shared -o $(.TARGET) $(.ALLSRC)
+	$(CC) -shared -fPIC -o $(.TARGET) $(.ALLSRC)
 
 install:
 	install -d $(LIBDIR)
