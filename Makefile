@@ -1,4 +1,4 @@
-.PHONY: all install clean 
+.PHONY: all install install-man install-static install-shared clean
 .SUFFIXES: .c .o
 
 LIBDIR= $(DESTDIR)$(PREFIX)/lib
@@ -17,12 +17,19 @@ libpatterns.a: patterns.o
 libpatterns.so: patterns.o
 	$(CC) -shared -fPIC -o $(.TARGET) $(.ALLSRC)
 
-install:
-	install -d $(LIBDIR)
+install: install-man install-static install-shared
+
+install-man:
 	install -d $(MANDIR)
-	install libpatterns.a $(LIBDIR)
-	install libpatterns.so $(LIBDIR)
 	install patterns.7 $(MANDIR)
+
+install-static:
+	install -d $(LIBDIR)
+	install libpatterns.a $(LIBDIR)
+
+install-shared:
+	install -d $(LIBDIR)
+	install libpatterns.so $(LIBDIR)
 
 clean:
 	rm -f $(OBJS) *.o
