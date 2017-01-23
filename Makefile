@@ -1,35 +1,42 @@
-.PHONY: all install install-man install-static install-shared clean
-.SUFFIXES: .c .o
+# libpatterns Makefile
+# Charlotte Koch <cfkoch@edgebsd.org>
 
-LIBDIR= $(DESTDIR)$(PREFIX)/lib
-MANDIR= $(DESTDIR)$(PREFIX)/man/man7
+LIBDIR?= ${DESTDIR}${PREFIX}/lib
+MANDIR?= ${DESTDIR}${PREFIX}/man/man7
 
 OBJS= libpatterns.a libpatterns.so
 
-all: $(OBJS)
+.PHONY: all
+all: ${OBJS}
 
+.SUFFIXES: .c .o
 .c.o:
-	$(CC) $(CFLAGS) -c -o $(.TARGET) $(.ALLSRC)
+	${CC} ${CFLAGS} -c -fPIC -o ${.TARGET} ${.ALLSRC}
 
 libpatterns.a: patterns.o
-	ar crs $(.TARGET) $(.ALLSRC)
+	ar crs ${.TARGET} ${.ALLSRC}
 
 libpatterns.so: patterns.o
-	$(CC) -shared -fPIC -o $(.TARGET) $(.ALLSRC)
+	${CC} -shared -o ${.TARGET} ${.ALLSRC}
 
+.PHONY: install
 install: install-man install-static install-shared
 
+.PHONY: install-man
 install-man:
-	install -d $(MANDIR)
-	install patterns.7 $(MANDIR)
+	install -d ${MANDIR}
+	install patterns.7 ${MANDIR}
 
+.PHONY: install-static
 install-static:
-	install -d $(LIBDIR)
-	install libpatterns.a $(LIBDIR)
+	install -d ${LIBDIR}
+	install -m0755 libpatterns.a ${LIBDIR}
 
+.PHONY: install-shared
 install-shared:
-	install -d $(LIBDIR)
-	install libpatterns.so $(LIBDIR)
+	install -d ${LIBDIR}
+	install -m0755 libpatterns.so ${LIBDIR}
 
+.PHONY: clean
 clean:
-	rm -f $(OBJS) *.o
+	rm -f ${OBJS} *.o *.core
