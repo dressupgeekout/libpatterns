@@ -25,12 +25,12 @@ install: install-man install-static install-shared
 .PHONY: install-man
 install-man:
 	install -d ${MANDIR}
-	install patterns.7 ${MANDIR}
+	install -m0644 patterns.7 ${MANDIR}
 
 .PHONY: install-static
 install-static:
 	install -d ${LIBDIR}
-	install -m0755 libpatterns.a ${LIBDIR}
+	install -m0644 libpatterns.a ${LIBDIR}
 
 .PHONY: install-shared
 install-shared:
