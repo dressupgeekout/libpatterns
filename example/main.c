@@ -1,6 +1,6 @@
 /*
  * Sample program for libpatterns
- * Christian Koch <cfkoch@edgebsd.org>
+ * Charlotte Koch <cfkoch@edgebsd.org>
  */
 
 #include <limits.h>
