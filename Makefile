@@ -15,7 +15,7 @@ all: ${OBJS}
 	${CC} ${CPPFLAGS} ${CFLAGS} -c -fPIC -o ${.TARGET} ${.ALLSRC}
 
 libpatterns.a: patterns.o
-	ar crs ${.TARGET} ${.ALLSRC}
+	${AR} crs ${.TARGET} ${.ALLSRC}
 
 libpatterns.so: patterns.o
 	${CC} -shared -o ${.TARGET} ${LDFLAGS} ${.ALLSRC}
