@@ -1,5 +1,5 @@
 # libpatterns Makefile
-# Charlotte Koch <cfkoch@edgebsd.org>
+# Charlotte Koch <charlotte@NetBSD.org>
 
 LIBDIR?=	${DESTDIR}${PREFIX}/lib
 MANDIR?=	${DESTDIR}${PREFIX}/man/man7

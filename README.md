@@ -15,7 +15,7 @@ The pattern matching is derived from the original implementation of the Lua
 scripting language written by Roberto Ierusalimschy, Waldemar Celes, and
 Luiz Henrique de Figueiredo at PUC-Rio. It was turned into a native C API
 for OpenBSD's httpd(8) by Reyk Floeter. That native C API was repackaged as
-a system-wide library by Charlotte Koch <cfkoch@edgebsd.org>
+a system-wide library by Charlotte Koch <charlotte@NetBSD.org>
 
 
 ## License
